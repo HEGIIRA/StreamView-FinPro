@@ -1,37 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:stream_view/ui/home/components/recommend.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false, // Hilangkan banner "debug" di pojok kanan atas
-      title: 'My Flutter App', // Nama aplikasi
-      theme: ThemeData(
-        primarySwatch: Colors.blue, // Warna utama
-      ),
-      home: const HomeScreen(), // Halaman utama
-    );
-  }
+  State<MyApp> createState() => _MyAppState();
 }
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false, // Hilangkan banner "debug"
+      title: 'My Flutter App', // Nama aplikasi
+      theme: ThemeData(
+        fontFamily: 'Mulish',
+        primarySwatch: Colors.blue, // Warna utama
       ),
-      body: const Center(
-        child: Text('Hello, Flutter!'),
-      ),
+      home: Recommend(), // Halaman utama
     );
   }
 }
