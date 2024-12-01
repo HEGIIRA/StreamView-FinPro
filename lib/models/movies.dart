@@ -4,7 +4,7 @@ class Movie {
 
   final String image, title, description, genre, rating;
   final int id, duration, releaseDate;
-  // final double price;
+
 
   Movie({
     required this.id,
@@ -22,7 +22,37 @@ class Movie {
   Movie(
       id: 1,
       title: "The Greatest Showman",
-      image: "assets/images/product_img/p_1.png",
+      image: "assets/images/movie_img/movie_1.png",
+      genre: "Sci-Fi",
+      rating: "4.5",
+      duration: 120,
+      releaseDate: 2021,
+      description: dummyText,
+      ),
+  Movie(
+      id: 2,
+      title: "Joy",
+      image: "assets/images/movie_img/movie_2.png",
+      genre: "Sci-Fi",
+      rating: "4.5",
+      duration: 120,
+      releaseDate: 2021,
+      description: dummyText,
+      ),
+  Movie(
+      id: 3,
+      title: "Parasite",
+      image: "assets/images/movie_img/movie_3.png",
+      genre: "Sci-Fi",
+      rating: "4.5",
+      duration: 120,
+      releaseDate: 2021,
+      description: dummyText,
+      ),
+  Movie(
+      id: 4,
+      title: "hegi pcr nishimura riki",
+      image: "assets/images/movie_img/movie_5.png",
       genre: "Sci-Fi",
       rating: "4.5",
       duration: 120,

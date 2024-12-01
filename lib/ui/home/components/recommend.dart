@@ -1,102 +1,108 @@
 import 'package:flutter/material.dart';
 import 'package:stream_view/consts.dart';
+import 'package:stream_view/models/movies.dart';
 
 class Recommend extends StatelessWidget {
-  Recommend({super.key});
+  const Recommend({
+    super.key,
+    required this.press,
+    required this.movies, // Menggunakan tipe List<Movie> untuk daftar film
+  });
 
-  final List<Map<String, String>> moviesRecommend = [
-    {
-      "title": "The Greatest Sh..",
-      "genre": "Romance, Drama",
-      "image": "assets/images/movie_img/movie_1.png",
-    },
-    {
-      "title": "The Dark Knight",
-      "genre": "Action, Drama",
-      "image": "assets/images/movie_img/movie_2.png",
-    },
-    {
-      "title": "Inception",
-      "genre": "Sci-Fi, Action",
-      "image": "assets/images/movie_img/movie_3.png",
-    },
-    {
-      "title": "Interstellar",
-      "genre": "Sci-Fi, Drama",
-      "image": "assets/images/movie_img/movie_5.png",
-    },
-  ];
+  final VoidCallback press;
+  final List<Movie> movies; // Daftar film yang diterima sebagai parameter
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
-      child:
-       SizedBox(
-        height: 200,  
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,  
-          itemCount: moviesRecommend.length, 
-          itemBuilder: (context, index) {
-            return _buildRecommend(context, index);
-          },
-        ),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "Recommended for you",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: blackTextColor,
+                    decoration: TextDecoration.none,
+                  ),
+                ),
+                TextButton(
+                  onPressed: press,
+                  child: const Text(
+                    "See All",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: primaryColor,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          // List horizontal untuk film
+          SizedBox(
+            height: 300, // Tinggi list view
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal, // Scroll horizontal
+              itemCount: movies.length, // Menggunakan movies.length sesuai parameter
+              itemBuilder: (context, index) =>
+                  _buildRecommend(context, movies[index]), // Ambil data berdasarkan index
+            ),
+          ),
+        ],
       ),
     );
   }
 
-  Widget _buildRecommend(BuildContext context, int index) {
-    var movie = moviesRecommend[index]; 
-
+  // Widget untuk item rekomendasi
+  GestureDetector _buildRecommend(BuildContext context, Movie movieItem) {
     return GestureDetector(
-      onTap: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => MovieDetailScreen(movie: movie),
-        //   ),
-        // );
-      },
+      onTap: press,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(padding: EdgeInsets.only(left: defaultPadding),
-            child: Text("Recommended for you",
-              style: TextStyle(
-                color: blackTextColor,
-                fontSize: 16,
-                fontWeight: FontWeight.bold
-              ),
-            ),
-            ),
             Container(
-              height: 240,  // Gambar film
-              width: 160,  // Gambar film
+              height: 250,
+              width: 150,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(5),
                 image: DecorationImage(
-                  image: AssetImage(movie['image']!),
+                  image: AssetImage(movieItem.image), // Ambil path gambar dari model
                   fit: BoxFit.cover,
                 ),
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              movie['title']!,
-              textAlign: TextAlign.left,
+              movieItem.title.length > 15
+              ? '${movieItem.title.substring(0, 15)}...' // Jika teks lebih dari 15 karakter, tampilkan 15 huruf + ...
+              : movieItem.title, // Jika teks kurang dari atau sama dengan 15 karakter, tampilkan seluruhnya
               style: const TextStyle(
+                decoration: TextDecoration.none,
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: blackTextColor,
               ),
+              maxLines: 1, //nge batasin cuma bisa 1 baris gitu
+              overflow: TextOverflow.ellipsis, //nh ini biar klo lebih bakal ada titik-titik (Hegira me..)
             ),
+            const SizedBox(height: 5),
             Text(
-              movie['genre']!,
+              movieItem.genre, // Ambil genre dari model
               style: const TextStyle(
-                fontSize: 12,
-                color: Colors.grey,
+                fontWeight: FontWeight.w500,
+                decoration: TextDecoration.none,
+                fontSize: 13,
+                color: greyDarkTextColor,
               ),
             ),
           ],
@@ -105,6 +111,3 @@ class Recommend extends StatelessWidget {
     );
   }
 }
-
-
-

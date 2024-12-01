@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:stream_view/consts.dart';
+import 'package:stream_view/ui/home/components/movie_banner.dart';
 import 'package:stream_view/ui/home/components/recommend.dart';
+import 'package:stream_view/ui/home/components/top_search.dart';
+import 'package:stream_view/ui/home/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,13 +20,15 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false, // Hilangkan banner "debug"
-      title: 'My Flutter App', // Nama aplikasi
+      debugShowCheckedModeBanner: false,
+      title: 'Stream View',
       theme: ThemeData(
         fontFamily: 'Mulish',
-        primarySwatch: Colors.blue, // Warna utama
       ),
-      home: Recommend(), // Halaman utama
+      // home: RecommendBanner(), 
+      // home: const HomeScreen(), 
+      // home: const Recommend(), 
+      home: const TopSearch(), 
     );
   }
 }
