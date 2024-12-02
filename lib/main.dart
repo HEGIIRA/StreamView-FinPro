@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:stream_view/consts.dart';
-import 'package:stream_view/ui/home/components/movie_banner.dart';
-import 'package:stream_view/ui/home/components/recommend.dart';
-import 'package:stream_view/ui/home/components/top_search.dart';
+import 'package:stream_view/ui/detail/detail_screen.dart';
 import 'package:stream_view/ui/home/home_screen.dart';
+import 'package:stream_view/ui/splash/on_boarding_screen.dart';
+import 'package:stream_view/ui/splash/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,10 +24,15 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         fontFamily: 'Mulish',
       ),
-      // home: RecommendBanner(), 
-      // home: const HomeScreen(), 
-      // home: const Recommend(), 
-      home: const TopSearch(), 
+
+      initialRoute: '/',
+      routes: {
+        '/' : (context) => const SplashScreen(),
+        '/onBoarding' : (context) => const OnBoardingScreen(),
+        '/home' : (context) => const HomeScreen(),
+        '/detail' : (context) => const DetailScreen(),
+
+      },
     );
   }
 }

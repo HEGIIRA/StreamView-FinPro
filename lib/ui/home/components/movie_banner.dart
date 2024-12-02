@@ -22,9 +22,8 @@ class _MovieBannerState extends State<MovieBanner> {
 
   // Daftar gambar untuk banner
   final List<String> _bannerImages = [
-    "assets/images/banner.png",
-    "assets/images/banner.png",
-    "assets/images/banner.png",
+    "assets/images/banner_img/banner_1.png",
+    "assets/images/banner_img/banner_2.png",
   ];
 
   @override
@@ -43,7 +42,7 @@ class _MovieBannerState extends State<MovieBanner> {
       // Menggerakkan PageView ke halaman yang sesuai
       _pageController.animateToPage(
         _currentPage, // Pindah ke halaman yang sesuai
-        duration: const Duration(milliseconds: 400), // Durasi transisi
+        duration: const Duration(milliseconds: 800), // Durasi transisi
         curve: Curves.easeInOut, // Efek transisi yang halus
       );
     });

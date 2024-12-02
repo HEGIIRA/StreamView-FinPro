@@ -48,7 +48,7 @@ class Recommend extends StatelessWidget {
           ),
           // List horizontal untuk film
           SizedBox(
-            height: 300, // Tinggi list view
+            height: 310, // Tinggi list view, memastikan tidak meluas secara vertikal
             child: ListView.builder(
               scrollDirection: Axis.horizontal, // Scroll horizontal
               itemCount: movies.length, // Menggunakan movies.length sesuai parameter

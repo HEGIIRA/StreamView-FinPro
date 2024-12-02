@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:stream_view/consts.dart';
 
 // TopSearch adalah widget untuk menampilkan daftar episode populer.
@@ -10,7 +11,7 @@ class TopSearch extends StatefulWidget {
 }
 
 class _TopSearchState extends State<TopSearch> {
-  final List<Map<String, String>> episodes = [
+  final List<Map<String, String>> movieList = [
     {
       "image": "assets/images/list_img/list_img1.png",
       "title": "Bridgerton",
@@ -50,23 +51,15 @@ class _TopSearchState extends State<TopSearch> {
             ),
           ),
         ),
-        // Gunakan Expanded jika ini bagian dari layout utama
-
-        SizedBox(
-          height: 300, // Atur tinggi jika ini bagian kecil dari layar
-          child: _buildEpisodeList(),
-        ),
+        _buildMovieList(),
       ],
     );
   }
 
-  Widget _buildEpisodeList() {
-    return ListView.builder(
-      scrollDirection: Axis.vertical, // Scroll secara vertikal
-      itemCount: episodes.length,
-      itemBuilder: (context, index) {
-        final episode = episodes[index];
-
+  Widget _buildMovieList() {
+    // Ganti ListView dengan Column untuk menampilkan item tanpa scroll
+    return Column(
+      children: movieList.map((episode) {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Row(
@@ -75,7 +68,7 @@ class _TopSearchState extends State<TopSearch> {
                 borderRadius: BorderRadius.circular(8),
                 child: Image.asset(
                   episode["image"]!,
-                  width: 150,
+                  width: 155,
                   height: 100,
                   fit: BoxFit.cover,
                 ),
@@ -105,17 +98,17 @@ class _TopSearchState extends State<TopSearch> {
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.emoji_events),
-                color: Colors.orange,
-                onPressed: () {
-                  // Tambahkan aksi di sini (contoh: navigasi atau log)
-                  debugPrint("Icon pressed for ${episode['title']}");
-                },
+                icon: const Icon(
+                  IconsaxPlusLinear.video_circle,
+                  size: 30,
+                ),
+                color: blackTextColor,
+                onPressed: () {},
               ),
             ],
           ),
         );
-      },
+      }).toList(), // Menggunakan map untuk mengubah list menjadi widgets Column
     );
   }
 }

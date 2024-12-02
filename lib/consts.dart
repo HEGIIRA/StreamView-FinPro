@@ -19,7 +19,7 @@ const greyDarkTextColor = Color(0xFF4C4E55);
 const iconColor = Color(0xFFB0B0B3);
 
 // animation duratiom time definition
-const animationDuration = Duration(milliseconds: 200);
+const animationDuration = Duration(milliseconds: 300);
 
 // default constant value for padding size
 const defaultPadding = 20.0;

@@ -35,11 +35,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
-  flutter_svg: ^2.0.10 #flutter svg library
-  provider: ^6.1.2 #library for state manegement (provider, bloc, getX,) state management tuh ngatur semua perubaham state di apk kita,
-                                                                        #
-  fluttertoast: ^8.2.8 #ini buat si library toast
-  shared_preferences: ^2.3.2
+  iconsax_plus: ^1.0.0
 
 
 dev_dependencies:
@@ -66,11 +62,12 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-
-
     - assets/images/
     - assets/images/movie_img/
     - assets/images/list_img/
+    - assets/images/detail_img/
+    - assets/images/onBoarding_img/
+    - assets/images/banner_img/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

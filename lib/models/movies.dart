@@ -1,8 +1,7 @@
-// import 'package:flutter/material.dart';
 
 class Movie {
 
-  final String image, title, description, genre, rating;
+  final String image, title, description, genre;
   final int id, duration, releaseDate;
 
 
@@ -11,7 +10,6 @@ class Movie {
     required this.title,
     required this.image,
     required this.genre,
-    required this.rating,
     required this.duration,
     required this.releaseDate,
     required this.description,
@@ -24,7 +22,6 @@ class Movie {
       title: "The Greatest Showman",
       image: "assets/images/movie_img/movie_1.png",
       genre: "Sci-Fi",
-      rating: "4.5",
       duration: 120,
       releaseDate: 2021,
       description: dummyText,
@@ -34,7 +31,6 @@ class Movie {
       title: "Joy",
       image: "assets/images/movie_img/movie_2.png",
       genre: "Sci-Fi",
-      rating: "4.5",
       duration: 120,
       releaseDate: 2021,
       description: dummyText,
@@ -43,18 +39,25 @@ class Movie {
       id: 3,
       title: "Parasite",
       image: "assets/images/movie_img/movie_3.png",
-      genre: "Sci-Fi",
-      rating: "4.5",
+      genre: "Drama",
       duration: 120,
       releaseDate: 2021,
       description: dummyText,
       ),
   Movie(
       id: 4,
-      title: "hegi pcr nishimura riki",
+      title: "Stranger Things",
+      image: "assets/images/movie_img/movie_4.png",
+      genre: "Horor Mystery",
+      duration: 120,
+      releaseDate: 2021,
+      description: dummyText,
+      ),
+  Movie(
+      id: 5,
+      title: "Stranded",
       image: "assets/images/movie_img/movie_5.png",
-      genre: "Sci-Fi",
-      rating: "4.5",
+      genre: "Action, Drama",
       duration: 120,
       releaseDate: 2021,
       description: dummyText,
